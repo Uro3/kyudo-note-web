@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import ScoreMark from './ScoreMark';
-
 type Props ={
   id: number;
   value: number;
@@ -18,10 +16,25 @@ export default class ScoreSet extends React.Component<Props, {}> {
     this.props.onClick(this.props.id, (this.props.value+1)%4);
   }
 
+  getSign(value: number) {
+    switch (value) {
+      case 0:
+        return '';
+      case 1:
+        return '×';
+      case 2:
+        return '○';
+      case 3:
+        return '?';
+      default:
+        return '';
+    }
+  }
+
   render() {
     return (
         <button onClick={this.onClick}>
-          <ScoreMark value={this.props.value}></ScoreMark>
+          {this.getSign(this.props.value)}
         </button>
     );
   }
