@@ -6,7 +6,7 @@ type Props ={
   onClick: (index: number, value: number) => void;
 }
 
-export default class ScoreSet extends React.Component<Props, {}> {
+export default class Score extends React.Component<Props, {}> {
   constructor(props: Props) {
     super(props)
     this.onClick = this.onClick.bind(this);

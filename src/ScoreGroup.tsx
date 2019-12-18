@@ -1,31 +1,22 @@
 import * as React from 'react';
 
-import ScoreSet from './ScoreSet';
+import ScoreUnit from './ScoreUnit';
 
 type State = {
-  scores: number[];
+  num: number;
 }
 
 export default class ScoreGroup extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props)
     this.state = {
-      scores: [1, 0, 1, 1]
+      num: 1
     };
-    this.onScoreChanged = this.onScoreChanged.bind(this);
-  }
-
-  onScoreChanged(index: number, value: number) {
-    const scores = this.state.scores.slice();
-    scores[index] = value;
-    this.setState(state => ({
-      scores: scores
-    }));
   }
 
   render() {
-    const scoreMarks = this.state.scores.map((score, index) => 
-      <ScoreSet key={index} id={index} value={score} onClick={this.onScoreChanged}></ScoreSet> 
+    const scoreMarks = Array(this.state.num).fill(0).map((values, index) => 
+      <ScoreUnit key={index}></ScoreUnit> 
     );
   return <div>{scoreMarks}</div>;
   }
