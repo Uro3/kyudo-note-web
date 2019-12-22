@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styles from './styles/score.scss';
 
 type Props ={
   id: number;
@@ -18,22 +19,20 @@ export default class Score extends React.Component<Props, {}> {
 
   getSign(value: number) {
     switch (value) {
-      case 0:
-        return '';
       case 1:
-        return '×';
+        return <span>×</span>;
       case 2:
-        return '○';
+        return <span>○</span>;
       case 3:
-        return '?';
+        return <span>?</span>;
       default:
-        return '';
+        return <span className={styles.transparent}>-</span>;;
     }
   }
 
   render() {
     return (
-        <button onClick={this.onClick}>
+        <button className={styles.score} onClick={this.onClick}>
           {this.getSign(this.props.value)}
         </button>
     );
