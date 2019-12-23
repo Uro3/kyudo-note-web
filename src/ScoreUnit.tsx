@@ -1,23 +1,23 @@
 import * as React from 'react';
 
-import Score from './Score';
+import Score, {ScoreValue} from './Score';
 
 type State = {
-  scores: number[];
-}
+  scores: ScoreValue[];
+};
 
 export default class ScoreUnit extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props)
     this.state = {
-      scores: [1, 0, 1, 1]
+      scores: [0, 0, 0, 0]
     };
     this.onScoreChanged = this.onScoreChanged.bind(this);
   }
 
-  onScoreChanged(index: number, value: number) {
+  onScoreChanged(index: number, nextValue: ScoreValue) {
     const scores = this.state.scores.slice();
-    scores[index] = value;
+    scores[index] = nextValue;
     this.setState(state => ({
       scores: scores
     }));
@@ -27,6 +27,6 @@ export default class ScoreUnit extends React.Component<{}, State> {
     const scoreMarks = this.state.scores.map((score, index) => 
       <Score key={index} id={index} value={score} onClick={this.onScoreChanged}></Score> 
     );
-  return <div>{scoreMarks}</div>;
+    return <div>{scoreMarks}</div>;
   }
 }
