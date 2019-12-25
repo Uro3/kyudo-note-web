@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import ScoreUnit from './ScoreUnit';
 
 type State = {
@@ -12,12 +11,24 @@ export default class ScoreGroup extends React.Component<{}, State> {
     this.state = {
       num: 1
     };
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(event: React.MouseEvent<HTMLButtonElement>) {
+    this.setState(state => ({
+      num: state.num + 1
+    }));
   }
 
   render() {
-    const scoreMarks = Array(this.state.num).fill(0).map((values, index) => 
+    const scoreUnits = Array(this.state.num).fill(0).map((values, index) => 
       <ScoreUnit key={index}></ScoreUnit> 
     );
-  return <div>{scoreMarks}</div>;
+    return (
+      <div>
+        {scoreUnits}
+        <button onClick={this.onClick}>追加</button>
+      </div>
+    );
   }
 }
