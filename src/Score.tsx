@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './styles/score.scss';
+import * as styles from './styles/score.scss';
 
 export type ScoreValue = 0 | 1 | 2 | 3;
 

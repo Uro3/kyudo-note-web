@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import * as styles from './styles/scoreUnit.scss';
 import Score, {ScoreValue} from './Score';
 
 type State = {
@@ -27,6 +27,6 @@ export default class ScoreUnit extends React.Component<{}, State> {
     const scoreMarks = this.state.scores.map((score, index) => 
       <Score key={index} id={index} value={score} onClick={this.onScoreChanged}></Score> 
     );
-    return <div>{scoreMarks}</div>;
+    return <div className={styles.row}>{scoreMarks}</div>;
   }
 }
