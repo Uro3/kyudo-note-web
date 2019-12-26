@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as styles from './styles/scoreUnit.scss';
-import Score, {ScoreValue} from './Score';
+import * as styles from './scoreUnit.scss';
+import Score, {ScoreValue} from '../Score';
 
 type State = {
   scores: ScoreValue[];

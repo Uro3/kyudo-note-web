@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ScoreUnit from './ScoreUnit';
+import ScoreUnit from '../ScoreUnit';
 
 type State = {
   num: number;

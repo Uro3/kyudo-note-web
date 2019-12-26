@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import ScoreGroup from './ScoreGroup';
+import ScoreGroup from './components/ScoreGroup';
 
 class App extends React.Component {
   render() {
