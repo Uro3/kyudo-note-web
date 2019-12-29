@@ -2,31 +2,30 @@ import * as React from 'react';
 import * as styles from './scoreUnit.scss';
 import Score from '../Score';
 
-type State = {
-  scores: number[];
+type Props = {
+  id: number;
+  values: number[];
+  onChanged: (index1: number, index2: number, value: number) => void;
 };
 
-export default class ScoreUnit extends React.Component<{}, State> {
-  constructor(props: {}) {
-    super(props)
-    this.state = {
-      scores: [0, 0, 0, 0]
-    };
-    this.onScoreChanged = this.onScoreChanged.bind(this);
+export default class ScoreUnit extends React.Component<Props, {}> {
+  constructor(props: Props) {
+    super(props);
+    this.onChanged = this.onChanged.bind(this);
   }
 
-  onScoreChanged(index: number, nextValue: number) {
-    const scores = this.state.scores.slice();
-    scores[index] = nextValue;
-    this.setState(state => ({
-      scores: scores
-    }));
+  onChanged(index: number, nextValue: number) {
+    this.props.onChanged(this.props.id, index, nextValue);
   }
 
   render() {
-    const scoreMarks = this.state.scores.map((score, index) => 
-      <Score key={index} id={index} value={score} onClick={this.onScoreChanged}></Score> 
+    const scoreMarks = this.props.values.map((value, index) => 
+      <Score key={index} id={index} value={value} onClick={this.onChanged}></Score> 
     );
-    return <div className={styles.row}>{scoreMarks}</div>;
+    return (
+      <div className={styles.row}>
+        {scoreMarks}
+      </div>
+    );
   }
 }

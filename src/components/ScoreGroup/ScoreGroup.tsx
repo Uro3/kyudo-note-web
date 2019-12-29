@@ -2,27 +2,34 @@ import * as React from 'react';
 import ScoreUnit from '../ScoreUnit';
 
 type State = {
-  num: number;
+  scores: number[][];
 }
 
 export default class ScoreGroup extends React.Component<{}, State> {
   constructor(props: {}) {
     super(props)
     this.state = {
-      num: 1
+      scores: [[0, 0, 0, 0]]
     };
     this.onClick = this.onClick.bind(this);
+    this.onScoreChanged = this.onScoreChanged.bind(this);
   }
 
   onClick(event: React.MouseEvent<HTMLButtonElement>) {
-    this.setState(state => ({
-      num: state.num + 1
-    }));
+    const scores = [...this.state.scores];
+    scores.push([0,0,0,0]);
+    this.setState({scores: scores});
+  }
+
+  onScoreChanged(index1: number, index2: number, nextValue: number) {
+    const scores = [...this.state.scores];
+    scores[index1][index2] = nextValue;
+    this.setState({scores: scores});
   }
 
   render() {
-    const scoreUnits = Array(this.state.num).fill(0).map((values, index) => 
-      <ScoreUnit key={index}></ScoreUnit> 
+    const scoreUnits = this.state.scores.map((values, index) => 
+      <ScoreUnit key={index} id={index} values={values} onChanged={this.onScoreChanged}></ScoreUnit> 
     );
     return (
       <div>
