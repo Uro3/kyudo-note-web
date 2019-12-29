@@ -7,16 +7,18 @@ const next = new Map<ScoreValue, ScoreValue>([
   [0, 1], [1, 2], [2, 3], [3, 0]
 ]);
 
-interface Sign {
-  character: string;
-  isVisible: boolean;
+enum Sign {
+  None = '-',
+  Hit = '○',
+  Miss = '×',
+  Unknown = '?',
 }
 
 const signMap = new Map<ScoreValue, Sign>([
-  [0, {character: '-', isVisible: false}],
-  [1, {character: '○', isVisible: true}],
-  [2, {character: '×', isVisible: true}],
-  [3, {character: '?', isVisible: true}],
+  [0, Sign.None],
+  [1, Sign.Hit],
+  [2, Sign.Miss],
+  [3, Sign.Unknown],
 ]);
 
 type Props = {
@@ -37,15 +39,13 @@ export default class Score extends React.Component<Props, {}> {
   }
 
   render() {
-    const sign = signMap.get(this.props.value);
-    if (sign) {
-      return (
-        <button className={styles.score} onClick={this.onClick}>
-          <span className={sign.isVisible ? '' : styles.transparent}>
-            {sign.character}
-          </span>
-        </button>
-      );
-    }
+    const sign = signMap.get(this.props.value) || Sign.None;
+    return (
+      <button className={styles.score} onClick={this.onClick}>
+        <span className={sign === Sign.None ? styles.transparent : ''}>
+          {sign}
+        </span>
+      </button>
+    );
   }
 }
