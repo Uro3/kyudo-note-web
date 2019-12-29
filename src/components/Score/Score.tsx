@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as styles from './score.scss';
 
-enum Sign {
+const enum Sign {
   None = '-',
   Hit = '○',
   Miss = '×',
