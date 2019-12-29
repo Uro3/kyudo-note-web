@@ -1,12 +1,6 @@
 import * as React from 'react';
 import * as styles from './score.scss';
 
-export type ScoreValue = 0 | 1 | 2 | 3;
-
-const next = new Map<ScoreValue, ScoreValue>([
-  [0, 1], [1, 2], [2, 3], [3, 0]
-]);
-
 enum Sign {
   None = '-',
   Hit = '○',
@@ -14,7 +8,7 @@ enum Sign {
   Unknown = '?',
 }
 
-const signMap = new Map<ScoreValue, Sign>([
+const signMap = new Map<number, Sign>([
   [0, Sign.None],
   [1, Sign.Hit],
   [2, Sign.Miss],
@@ -23,8 +17,8 @@ const signMap = new Map<ScoreValue, Sign>([
 
 type Props = {
   id: number;
-  value: ScoreValue;
-  onClick: (index: number, value: ScoreValue) => void;
+  value: number;
+  onClick: (index: number, value: number) => void;
 };
 
 export default class Score extends React.Component<Props, {}> {
@@ -34,7 +28,7 @@ export default class Score extends React.Component<Props, {}> {
   }
 
   onClick(event: React.MouseEvent<HTMLButtonElement>) {
-    const nextValue = next.get(this.props.value) || 0;
+    const nextValue = (this.props.value + 1) % 4;
     this.props.onClick(this.props.id, nextValue);
   }
 

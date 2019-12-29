@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as styles from './scoreUnit.scss';
-import Score, {ScoreValue} from '../Score';
+import Score from '../Score';
 
 type State = {
-  scores: ScoreValue[];
+  scores: number[];
 };
 
 export default class ScoreUnit extends React.Component<{}, State> {
@@ -15,7 +15,7 @@ export default class ScoreUnit extends React.Component<{}, State> {
     this.onScoreChanged = this.onScoreChanged.bind(this);
   }
 
-  onScoreChanged(index: number, nextValue: ScoreValue) {
+  onScoreChanged(index: number, nextValue: number) {
     const scores = this.state.scores.slice();
     scores[index] = nextValue;
     this.setState(state => ({

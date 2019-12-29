@@ -1,6 +1,3 @@
-import Score, {ScoreValue} from './Score';
+import Score from './Score';
 
 export default Score;
-export {
-  ScoreValue
-};
