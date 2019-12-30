@@ -8,24 +8,20 @@ type Props = {
   onChanged: (index1: number, index2: number, value: number) => void;
 };
 
-export default class ScoreUnit extends React.Component<Props, {}> {
-  constructor(props: Props) {
-    super(props);
-    this.onChanged = this.onChanged.bind(this);
-  }
+const ScoreUnit: React.FC<Props> = props => {
+  const onChanged = (index: number, nextValue: number) => {
+    props.onChanged(props.id, index, nextValue);
+  };
 
-  onChanged(index: number, nextValue: number) {
-    this.props.onChanged(this.props.id, index, nextValue);
-  }
+  const scores = props.values.map((value, index) => 
+    <Score key={index} id={index} value={value} onClick={onChanged}></Score> 
+  );
 
-  render() {
-    const scoreMarks = this.props.values.map((value, index) => 
-      <Score key={index} id={index} value={value} onClick={this.onChanged}></Score> 
-    );
-    return (
-      <div className={styles.row}>
-        {scoreMarks}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={styles.row}>
+      {scores}
+    </div>
+  );
+};
+
+export default ScoreUnit;

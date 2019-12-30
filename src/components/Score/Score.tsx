@@ -21,25 +21,21 @@ type Props = {
   onClick: (index: number, value: number) => void;
 };
 
-export default class Score extends React.Component<Props, {}> {
-  constructor(props: Props) {
-    super(props);
-    this.onClick = this.onClick.bind(this);
-  }
+const Score: React.FC<Props> = props => {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const nextValue = (props.value + 1) % 4;
+    props.onClick(props.id, nextValue);
+  };
 
-  onClick(event: React.MouseEvent<HTMLButtonElement>) {
-    const nextValue = (this.props.value + 1) % 4;
-    this.props.onClick(this.props.id, nextValue);
-  }
+  const sign = signMap.get(props.value) || Sign.None;
 
-  render() {
-    const sign = signMap.get(this.props.value) || Sign.None;
-    return (
-      <button className={styles.score} onClick={this.onClick}>
-        <span className={sign === Sign.None ? styles.transparent : ''}>
-          {sign}
-        </span>
-      </button>
-    );
-  }
-}
+  return (
+    <button className={styles.score} onClick={onClick}>
+      <span className={sign === Sign.None ? styles.transparent : ''}>
+        {sign}
+      </span>
+    </button>
+  );
+};
+
+export default Score;
