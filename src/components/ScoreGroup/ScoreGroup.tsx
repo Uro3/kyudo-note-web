@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ScoreUnit from '../ScoreUnit';
+import Score from '../Score';
 import {ScoreState} from '../../types';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 const ScoreGroup: React.FC<Props> = props => {
   const scoreUnits = props.scores.map(score => 
-    <ScoreUnit key={score.id} id={score.id} values={score.values}></ScoreUnit> 
+    <Score key={score.id} id={score.id} values={score.values}></Score> 
   );
 
   return (

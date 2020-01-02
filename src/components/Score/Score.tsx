@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './scoreUnit.scss';
+import * as styles from './score.scss';
 import {ScoreValueContainer} from '../ScoreValue';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   values: number[];
 };
 
-const ScoreUnit: React.FC<Props> = props => {
+const Score: React.FC<Props> = props => {
   const scores = props.values.map((value, index) => 
     <ScoreValueContainer key={index} id={index} parentId={props.id} value={value}></ScoreValueContainer> 
   );
@@ -19,4 +19,4 @@ const ScoreUnit: React.FC<Props> = props => {
   );
 };
 
-export default ScoreUnit;
+export default Score;
