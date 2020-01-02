@@ -1,14 +1,15 @@
 import * as React from 'react';
 import ScoreUnit from '../ScoreUnit';
+import {ScoreState} from '../../types';
 
 type Props = {
-  scores: number[][],
+  scores: ScoreState[],
   add: () => void,
 };
 
 const ScoreGroup: React.FC<Props> = props => {
-  const scoreUnits = props.scores.map((values, index) => 
-    <ScoreUnit key={index} id={index} values={values}></ScoreUnit> 
+  const scoreUnits = props.scores.map(score => 
+    <ScoreUnit key={score.id} id={score.id} values={score.values}></ScoreUnit> 
   );
 
   return (
