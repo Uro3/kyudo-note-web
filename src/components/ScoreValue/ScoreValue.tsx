@@ -16,7 +16,7 @@ const signMap = new Map<number, Sign>([
 ]);
 
 type Props = {
-  parentId: number;
+  scoreId: number;
   id: number;
   value: number;
   update: (value: number) => void;

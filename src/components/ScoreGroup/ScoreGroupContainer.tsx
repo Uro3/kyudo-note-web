@@ -5,7 +5,7 @@ import {add} from '../../modules/scoreGroup';
 import ScoreGroup from './ScoreGroup';
 
 const mapStateToProps = (state: AppState) => ({
-  scores: state.ScoreGroup.scores
+  scoreIds: state.ScoreGroup.scores.map(score => score.id)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({

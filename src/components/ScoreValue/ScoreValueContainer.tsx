@@ -1,23 +1,31 @@
 import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
-import {AppActions} from '../../store';
+import {AppState, AppActions} from '../../store';
 import {update} from '../../modules/scoreGroup';
 import ScoreValue from './ScoreValue'
 
 type Props = {
-  parentId: number;
+  scoreId: number;
   id: number;
-  value: number;
+};
+
+const mapStateToProps = (state: AppState, ownProps: Props) => {
+  const {scoreId, id} = ownProps;
+  const score = state.ScoreGroup.scores.find(score => score.id === scoreId);
+  const value = score ? score.values[id] : 0;
+  return {
+    value: value
+  }
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>, ownProps: Props) => {
-  const {parentId, id} = ownProps;
+  const {scoreId, id} = ownProps;
   return {
-    update: (value: number) => dispatch(update(parentId, id, value))
+    update: (value: number) => dispatch(update(scoreId, id, value))
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(ScoreValue);
