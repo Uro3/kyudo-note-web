@@ -2,7 +2,7 @@ import {Dispatch} from 'redux';
 import {connect} from 'react-redux';
 import {AppActions} from '../../store';
 import {update} from '../../modules/scoreGroup';
-import Score from './Score'
+import ScoreValue from './ScoreValue'
 
 type Props = {
   parentId: number;
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch: Dispatch<AppActions>, ownProps: Props) => 
 export default connect(
   null,
   mapDispatchToProps,
-)(Score);
+)(ScoreValue);

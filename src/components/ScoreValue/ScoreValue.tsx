@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './score.scss';
+import * as styles from './scoreValue.scss';
 
 const enum Sign {
   None = '-',
@@ -22,7 +22,7 @@ type Props = {
   update: (value: number) => void;
 };
 
-const Score: React.FC<Props> = props => {
+const scoreValue: React.FC<Props> = props => {
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const nextValue = (props.value + 1) % 4;
     props.update(nextValue);
@@ -39,4 +39,4 @@ const Score: React.FC<Props> = props => {
   );
 };
 
-export default Score;
+export default scoreValue;
