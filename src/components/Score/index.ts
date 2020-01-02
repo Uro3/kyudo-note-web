@@ -1,3 +1,7 @@
 import Score from './Score';
+import ScoreContainer from './ScoreContainer';
 
-export default Score;
+export {
+  Score,
+  ScoreContainer,
+};

@@ -16,15 +16,16 @@ const signMap = new Map<number, Sign>([
 ]);
 
 type Props = {
+  parentId: number;
   id: number;
   value: number;
-  onClick: (index: number, value: number) => void;
+  update: (value: number) => void;
 };
 
 const Score: React.FC<Props> = props => {
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const nextValue = (props.value + 1) % 4;
-    props.onClick(props.id, nextValue);
+    props.update(nextValue);
   };
 
   const sign = signMap.get(props.value) || Sign.None;
