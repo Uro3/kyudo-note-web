@@ -55,9 +55,13 @@ export default function reducer(state:ScoreGroupState = initialState, action: Sc
       };
     }
     case UPDATE: {
-      const scoreIndex = state.scores.findIndex(score => score.id === action.payload.id);
-      const newScores = [...state.scores];
-      newScores[scoreIndex].values[action.payload.index] = action.payload.value;
+      const {id, index, value} = action.payload;
+      const newScores = state.scores.map(score => {
+        if (score.id === id) {
+          score.values[index] = value;
+        }
+        return score;
+      });
       return {
         ...state,
         scores: newScores,
