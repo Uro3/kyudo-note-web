@@ -1,5 +1,6 @@
 import {Action} from 'redux';
-import {ScoreGroupState} from '../types';
+import {ScoreGroupState, ScoreState} from '../types';
+import {STORAGE_NAME} from '../constants';
 
 const ADD = 'app/scoreGroup/ADD' as const;
 const UPDATE = 'app/scoreGroup/UPDATE' as const;
@@ -30,12 +31,26 @@ export const update = (id: number, index: number): UpdateAction => ({
 
 export type ScoreGroupActions = AddAction | UpdateAction;
 
+let initialScore: ScoreState[] = [{
+  id: 0,
+  values: [0, 0, 0, 0],
+}];
+
+const localDataJson = localStorage.getItem(STORAGE_NAME);
+if (localDataJson) {
+  try {
+    const localData: ScoreState[] = JSON.parse(localDataJson);
+    if (localData.length > 0) {
+      initialScore = localData;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 const initialState: ScoreGroupState = {
-  lastId: 0,
-  scores: [{
-    id: 0,
-    values: [0, 0, 0, 0],
-  }]
+  lastId: Math.max(...initialScore.map(score => score.id)),
+  scores: initialScore
 };
 
 export default function reducer(state:ScoreGroupState = initialState, action: ScoreGroupActions) {
