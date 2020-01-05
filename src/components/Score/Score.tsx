@@ -1,40 +1,17 @@
 import * as React from 'react';
 import * as styles from './score.scss';
+import {ScoreValueContainer} from '../ScoreValue';
+import {ScoreState} from '../../types';
 
-const enum Sign {
-  None = '-',
-  Hit = '○',
-  Miss = '×',
-  Unknown = '?',
-}
-
-const signMap = new Map<number, Sign>([
-  [0, Sign.None],
-  [1, Sign.Hit],
-  [2, Sign.Miss],
-  [3, Sign.Unknown],
-]);
-
-type Props = {
-  id: number;
-  value: number;
-  onClick: (index: number, value: number) => void;
-};
-
-const Score: React.FC<Props> = props => {
-  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const nextValue = (props.value + 1) % 4;
-    props.onClick(props.id, nextValue);
-  };
-
-  const sign = signMap.get(props.value) || Sign.None;
+const Score: React.FC<ScoreState> = props => {
+  const ScoreValues = props.values.map((value, index) => 
+    <ScoreValueContainer key={index} id={index} value={value} scoreId={props.id}></ScoreValueContainer> 
+  );
 
   return (
-    <button className={styles.score} onClick={onClick}>
-      <span className={sign === Sign.None ? styles.transparent : ''}>
-        {sign}
-      </span>
-    </button>
+    <div className={styles.row}>
+      {ScoreValues}
+    </div>
   );
 };
 

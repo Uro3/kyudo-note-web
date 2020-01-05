@@ -1,3 +1,7 @@
 import ScoreGroup from './ScoreGroup';
+import ScoreGroupContainer from './ScoreGroupContainer';
 
-export default ScoreGroup;
+export {
+  ScoreGroup,
+  ScoreGroupContainer,
+};

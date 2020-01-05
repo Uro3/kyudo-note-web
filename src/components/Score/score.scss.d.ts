@@ -1,2 +1,1 @@
-export const score: string;
-export const transparent: string;
+export const row: string;

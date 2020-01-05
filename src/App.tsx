@@ -1,9 +1,9 @@
 import * as React from 'react';
-import ScoreGroup from './components/ScoreGroup';
+import {ScoreGroupContainer} from './components/ScoreGroup';
 
 const App: React.FC = () => {
   return (
-    <ScoreGroup />
+    <ScoreGroupContainer />
   );
 };
 
