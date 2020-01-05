@@ -4,6 +4,5 @@ export type ScoreState = {
 };
 
 export type ScoreGroupState = {
-  lastId: number,
   scores: ScoreState[],
 };

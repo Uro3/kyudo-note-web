@@ -31,39 +31,33 @@ export const update = (id: number, index: number): UpdateAction => ({
 
 export type ScoreGroupActions = AddAction | UpdateAction;
 
-let initialScore: ScoreState[] = [{
-  id: 0,
-  values: [0, 0, 0, 0],
-}];
-
+let localData: ScoreState[] = [];
 const localDataJson = localStorage.getItem(STORAGE_NAME);
 if (localDataJson) {
   try {
-    const localData: ScoreState[] = JSON.parse(localDataJson);
-    if (localData.length > 0) {
-      initialScore = localData;
-    }
+    localData = JSON.parse(localDataJson);
   } catch (e) {
     console.error(e);
   }
 }
 
 const initialState: ScoreGroupState = {
-  lastId: Math.max(...initialScore.map(score => score.id)),
-  scores: initialScore
+  scores: localData.length > 0 ? localData : [{
+    id: 0,
+    values: [0, 0, 0, 0],
+  }]
 };
 
 export default function reducer(state:ScoreGroupState = initialState, action: ScoreGroupActions) {
   switch (action.type) {
     case ADD: {
-      const newId = state.lastId + 1;
+      const lastId = Math.max(...state.scores.map(score => score.id));
       const newScore = {
-        id: newId,
+        id: lastId + 1,
         values: [0, 0, 0, 0]
       };
       return {
         ...state,
-        lastId: newId,
         scores: [...state.scores, newScore],
       };
     }
