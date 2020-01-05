@@ -17,16 +17,14 @@ interface UpdateAction extends Action {
   payload: {
     id: number;
     index: number;
-    value: number;
   };
 }
 
-export const update = (id: number, index: number, value: number): UpdateAction => ({
+export const update = (id: number, index: number): UpdateAction => ({
   type: UPDATE,
   payload: {
     id: id,
-    index: index,
-    value: value,
+    index: index
   }
 });
 
@@ -55,10 +53,11 @@ export default function reducer(state:ScoreGroupState = initialState, action: Sc
       };
     }
     case UPDATE: {
-      const {id, index, value} = action.payload;
+      const {id, index} = action.payload;
       const newScores = state.scores.map(score => {
         if (score.id === id) {
-          score.values[index] = value;
+          const value = score.values[index]
+          score.values[index] = (value + 1) % 4;
         }
         return score;
       });

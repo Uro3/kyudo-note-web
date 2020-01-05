@@ -3,13 +3,13 @@ import Score from '../Score';
 import {ScoreState} from '../../types';
 
 type Props = {
-  scoreIds: number[],
+  scores: ScoreState[],
   add: () => void,
 };
 
 const ScoreGroup: React.FC<Props> = props => {
-  const scoreUnits = props.scoreIds.map(id => 
-    <Score key={id} id={id}></Score> 
+  const scoreUnits = props.scores.map(score => 
+    <Score key={score.id} id={score.id} values={score.values}></Score> 
   );
 
   return (
