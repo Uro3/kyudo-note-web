@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import {Home} from './components/Home';
 import {ScoreGroupContainer} from './components/ScoreGroup';
-import {Login} from './components/Auth';
+import {Login, Register} from './components/Auth';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +20,7 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path='/' component={Home}></Route>
         <Route path='/login' component={Login}></Route>
+        <Route path='/register' component={Register}></Route>
         <Route path='/record' component={ScoreGroupContainer}></Route>
       </Switch>
     </Router>

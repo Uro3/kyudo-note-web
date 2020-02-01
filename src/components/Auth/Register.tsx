@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-const Login: React.FC<{}> = () => {
+const Register: React.FC<{}> = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -21,7 +21,7 @@ const Login: React.FC<{}> = () => {
 
   return (
     <div>
-      <p>ログイン</p>
+      <p>新規登録</p>
       <form onSubmit={onSubmit}>
         <label>
           Email:
@@ -33,9 +33,9 @@ const Login: React.FC<{}> = () => {
         </label>
         <input type="submit" value="ログイン"/>
       </form>
-      <Link to='/register'>新規登録</Link>
+      <Link to='/login'>ログイン</Link>
     </div>
   );
 };
 
-export default Login;
+export default Register;
