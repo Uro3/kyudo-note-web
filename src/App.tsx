@@ -5,6 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import {Home} from './components/Home';
 import {ScoreGroupContainer} from './components/ScoreGroup';
 import {Login} from './components/Auth';
 
@@ -17,8 +18,9 @@ const App: React.FC = () => {
       </ul>
       <hr/>
       <Switch>
-        <Route exact path='/' component={ScoreGroupContainer}></Route>
+        <Route exact path='/' component={Home}></Route>
         <Route path='/login' component={Login}></Route>
+        <Route path='/record' component={ScoreGroupContainer}></Route>
       </Switch>
     </Router>
   );
