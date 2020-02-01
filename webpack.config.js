@@ -35,6 +35,7 @@ module.exports = {
     contentBase: `${__dirname}/docs`,
     port: 3000,
     inline: true,
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
