@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 const Register: React.FC<{}> = () => {
   const [email, setEmail] = React.useState('');
@@ -11,12 +13,15 @@ const Register: React.FC<{}> = () => {
   const onPasswordChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(`
-      email: ${email}
-      password: ${password}
-    `);
+
+    try {
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
