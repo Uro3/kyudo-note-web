@@ -36,7 +36,7 @@ const Register: React.FC<{}> = () => {
           Password:
           <input type="password" value={password} onChange={onPasswordChanged}/>
         </label>
-        <input type="submit" value="ログイン"/>
+        <input type="submit" value="登録"/>
       </form>
       <Link to='/login'>ログイン</Link>
     </div>
