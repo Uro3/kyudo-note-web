@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from '../../firebase';
 
 const Register: React.FC<{}> = () => {
   const [email, setEmail] = React.useState('');

@@ -1,4 +1,5 @@
 import * as firebase from "firebase/app";
+import 'firebase/auth';
 
 type ConfigParameters = {
   apiKey: string,
@@ -6,9 +7,9 @@ type ConfigParameters = {
   senderId: string,
   appId: string,
   measurementId: string,
-}
+};
 
-const initFirebase = (configParameters: ConfigParameters) => {
+export const initFirebase = (configParameters: ConfigParameters) => {
   if (firebase.apps.length) {
     return;
   }
@@ -27,6 +28,4 @@ const initFirebase = (configParameters: ConfigParameters) => {
   firebase.initializeApp(firebaseConfig);
 };
 
-export {
-  initFirebase
-}
+export default firebase;
