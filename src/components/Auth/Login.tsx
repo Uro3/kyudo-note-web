@@ -1,14 +1,16 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import firebase from '../../firebase';
 
 const Login: React.FC<{}> = () => {
+  const history = useHistory();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const onEmailChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
+
   const onPasswordChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
@@ -17,11 +19,11 @@ const Login: React.FC<{}> = () => {
     event.preventDefault();
 
     try {
-      firebase.auth().signInWithEmailAndPassword(email, password);
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
-
   };
 
   return (

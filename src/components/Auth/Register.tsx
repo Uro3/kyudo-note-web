@@ -1,14 +1,16 @@
 import * as React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import firebase from '../../firebase';
 
 const Register: React.FC<{}> = () => {
+  const history = useHistory();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const onEmailChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
+
   const onPasswordChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
@@ -18,6 +20,7 @@ const Register: React.FC<{}> = () => {
 
     try {
       await firebase.auth().createUserWithEmailAndPassword(email, password);
+      history.push('/');
     } catch (error) {
       console.log(error);
     }
