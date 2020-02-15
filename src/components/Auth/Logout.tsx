@@ -6,12 +6,14 @@ const Logout: React.FC<{}> = () => {
   const history = useHistory();
   const [isLogoutFinished, setIsLogoutFinished] = React.useState(false);
 
-  firebase.auth().signOut().then(() => {
-    setIsLogoutFinished(true);
-  }).catch(error => {
-    console.log(error);
-    history.goBack();
-  });
+  React.useEffect(() => {
+    firebase.auth().signOut().then(() => {
+      setIsLogoutFinished(true);
+    }).catch(error => {
+      console.log(error);
+      history.goBack();
+    });
+  }, []);
 
   const view = isLogoutFinished
     ? <Redirect to='/login'/>

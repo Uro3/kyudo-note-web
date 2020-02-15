@@ -10,14 +10,14 @@ const Auth: React.FC<Props> = props => {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [isCheckFinished, setIsCheckFinished] = React.useState(false);
 
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      console.log(user);
-      
-      setIsLoggedIn(true);
-    }
-    setIsCheckFinished(true);
-  });
+  React.useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        setIsLoggedIn(true);
+      }
+      setIsCheckFinished(true);
+    });
+  }, []);
 
   let view;
   if (isCheckFinished) {
@@ -29,7 +29,6 @@ const Auth: React.FC<Props> = props => {
   } else {
     view = <p>Checking...</p>;
   }
-  
 
   return (
     <div>
