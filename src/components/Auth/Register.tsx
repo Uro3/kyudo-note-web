@@ -26,6 +26,15 @@ const Register: React.FC<{}> = () => {
     }
   };
 
+  React.useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        // @TODO Fix
+        history.push('/');
+      }
+    });
+  }, []);
+
   return (
     <div>
       <p>新規登録</p>

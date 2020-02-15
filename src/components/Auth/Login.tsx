@@ -26,6 +26,15 @@ const Login: React.FC<{}> = () => {
     }
   };
 
+  React.useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        // @TODO Fix
+        history.push('/');
+      }
+    });
+  }, []);
+
   return (
     <div>
       <p>ログイン</p>
