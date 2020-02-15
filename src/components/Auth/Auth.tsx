@@ -19,21 +19,14 @@ const Auth: React.FC<Props> = props => {
     });
   }, []);
 
-  let view;
-  if (isCheckFinished) {
-    if (isLoggedIn) {
-      view = props.children;
-    } else {
-      view = <Redirect to='/login' />;
-    }
-  } else {
-    view = <p>Checking...</p>;
+  if (!isCheckFinished) {
+    return <p>Checking...</p>;
   }
-
+  if (isLoggedIn) {
+    return <div>{props.children}</div>;
+  }
   return (
-    <div>
-      { view }
-    </div>
+    <Redirect to='/login' />
   );
 };
 
