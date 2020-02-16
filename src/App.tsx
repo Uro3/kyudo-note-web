@@ -5,9 +5,9 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import {Home} from './components/Home';
-import {ScoreGroupContainer} from './components/ScoreGroup';
-import {Auth, Register, Login, Logout} from './components/Auth';
+import { Home } from './components/Home';
+import { ScoreGroupContainer } from './components/ScoreGroup';
+import { Auth, Register, Login, Logout } from './components/Auth';
 
 const App: React.FC = () => {
   return (

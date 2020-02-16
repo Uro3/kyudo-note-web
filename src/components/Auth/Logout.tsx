@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Redirect, useHistory} from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import firebase from '../../firebase';
 
 const Logout: React.FC<{}> = () => {

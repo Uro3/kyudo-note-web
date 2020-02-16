@@ -1,6 +1,6 @@
-import {Action} from 'redux';
-import {ScoreGroupState, ScoreState} from '../types';
-import {STORAGE_NAME} from '../constants';
+import { Action } from 'redux';
+import { ScoreGroupState, ScoreState } from '../types';
+import { STORAGE_NAME } from '../constants';
 
 const ADD = 'app/scoreGroup/ADD' as const;
 const UPDATE = 'app/scoreGroup/UPDATE' as const;
