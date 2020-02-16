@@ -2,14 +2,14 @@ import * as firebase from "firebase/app";
 import 'firebase/auth';
 
 type ConfigParameters = {
-  apiKey: string,
-  projectId: string,
-  senderId: string,
-  appId: string,
-  measurementId: string,
+  apiKey: string;
+  projectId: string;
+  senderId: string;
+  appId: string;
+  measurementId: string;
 };
 
-export const initFirebase = (configParameters: ConfigParameters) => {
+export const initFirebase = (configParameters: ConfigParameters): void => {
   if (firebase.apps.length) {
     return;
   }

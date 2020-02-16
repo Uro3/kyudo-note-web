@@ -1,5 +1,5 @@
-import {createStore, combineReducers} from 'redux';
-import ScoreGroup, {ScoreGroupActions} from './modules/scoreGroup';
+import { createStore, combineReducers } from 'redux';
+import ScoreGroup, { ScoreGroupActions } from './modules/scoreGroup';
 
 const reducers = combineReducers({
   ScoreGroup

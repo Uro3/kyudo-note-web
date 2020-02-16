@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import firebase from '../../firebase';
 
 type Props = {
-  children: React.ReactNode,
+  children: React.ReactNode;
 };
 
 const Auth: React.FC<Props> = props => {

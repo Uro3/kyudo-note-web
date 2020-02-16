@@ -1,6 +1,6 @@
-import {Action} from 'redux';
-import {ScoreGroupState, ScoreState} from '../types';
-import {STORAGE_NAME} from '../constants';
+import { Action } from 'redux';
+import { ScoreGroupState, ScoreState } from '../types';
+import { STORAGE_NAME } from '../constants';
 
 const ADD = 'app/scoreGroup/ADD' as const;
 const UPDATE = 'app/scoreGroup/UPDATE' as const;
@@ -48,7 +48,7 @@ const initialState: ScoreGroupState = {
   }]
 };
 
-export default function reducer(state:ScoreGroupState = initialState, action: ScoreGroupActions) {
+export default function reducer(state: ScoreGroupState = initialState, action: ScoreGroupActions): ScoreGroupState {
   switch (action.type) {
     case ADD: {
       const lastId = Math.max(...state.scores.map(score => score.id));

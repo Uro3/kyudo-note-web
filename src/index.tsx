@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
-import {initFirebase} from './firebase';
+import { initFirebase } from './firebase';
 
 const firebaseParameters = {
   apiKey: process.env.FIREBASE_API_KEY || '',
