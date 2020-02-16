@@ -48,7 +48,7 @@ const initialState: ScoreGroupState = {
   }]
 };
 
-export default function reducer(state:ScoreGroupState = initialState, action: ScoreGroupActions) {
+export default function reducer(state: ScoreGroupState = initialState, action: ScoreGroupActions): ScoreGroupState {
   switch (action.type) {
     case ADD: {
       const lastId = Math.max(...state.scores.map(score => score.id));

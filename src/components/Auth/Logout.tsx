@@ -13,7 +13,7 @@ const Logout: React.FC<{}> = () => {
       console.log(error);
       history.goBack();
     });
-  }, []);
+  }, [history]);
 
   const view = isLogoutFinished
     ? <Redirect to='/login'/>

@@ -4,8 +4,8 @@ import {ScoreState} from '../../types';
 import {STORAGE_NAME} from '../../constants';
 
 type Props = {
-  scores: ScoreState[],
-  add: () => void,
+  scores: ScoreState[];
+  add: () => void;
 };
 
 const ScoreGroup: React.FC<Props> = props => {
@@ -13,7 +13,7 @@ const ScoreGroup: React.FC<Props> = props => {
     <Score key={score.id} id={score.id} values={score.values}></Score> 
   );
 
-  const onClickSave = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickSave = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const savedScores = props.scores.filter(scores =>
       scores.values.some(value => value)
     );

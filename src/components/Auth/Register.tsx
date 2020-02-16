@@ -7,15 +7,15 @@ const Register: React.FC<{}> = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
-  const onEmailChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onEmailChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(event.target.value);
   };
 
-  const onPasswordChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onPasswordChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setPassword(event.target.value);
   };
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
 
     try {
@@ -33,7 +33,7 @@ const Register: React.FC<{}> = () => {
         history.push('/');
       }
     });
-  }, []);
+  }, [history]);
 
   return (
     <div>
