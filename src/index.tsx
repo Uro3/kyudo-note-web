@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
 import { initFirebase } from './firebase';
+import './assets/style/bulma.scss';
 
 const firebaseParameters = {
   apiKey: process.env.FIREBASE_API_KEY || '',
