@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 
 const Login: React.FC<{}> = () => {
   return (
-    <ul>
-      <li>
-        <Link to="/record">記録する</Link>
-      </li>
-    </ul>
+    <div className="container">
+      <ul>
+        <li>
+          <Link to="/record">記録する</Link>
+        </li>
+      </ul>
+    </div>
   );
 };
 

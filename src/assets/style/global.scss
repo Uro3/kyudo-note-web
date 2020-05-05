@@ -1,0 +1,33 @@
+.og-vspace {
+  margin-top: 1rem;
+}
+
+.og-form-field {
+  $width: 480px;
+  max-width: $width;
+  margin: 0 auto;
+  input {
+    max-width: $width;
+  }
+}
+
+.og-score-row + .og-score-row {
+  margin-top: 1rem;
+}
+
+.og-score {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0 0.1rem;
+  background-color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-color: #555;
+
+  .og-transparent {
+    opacity: 0;
+  }
+}
