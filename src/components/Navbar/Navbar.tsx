@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import logo from '../../assets/image/logo.png';
 
 const Navbar: React.FC<{}> = () => {
   const ACTIVE_CLASSNAME = 'is-active';
@@ -21,7 +22,7 @@ const Navbar: React.FC<{}> = () => {
     <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <Link to="/" className="navbar-item">
-          <img src="test" alt="logo" width="112" height="28"/>
+          <img src={logo} alt="logo" width="112" height="28"/>
         </Link>
 
         <a role="button" className={addActive('navbar-burger')} aria-label="menu" aria-expanded="false" onClick={toggleBurger}>
