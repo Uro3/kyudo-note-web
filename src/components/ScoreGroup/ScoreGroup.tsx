@@ -24,8 +24,10 @@ const ScoreGroup: React.FC<Props> = props => {
   return (
     <div className="container">
       {scoreUnits}
-      <button className="button is-small" onClick={props.add}>追加</button>
-      <button className="button is-small" onClick={onClickSave}>一時保存</button>
+      <div className="og-vspace">
+        <button className="button is-small" onClick={props.add}>追加</button>
+        <button className="button is-small" onClick={onClickSave}>一時保存</button>
+      </div>
     </div>
   );
 };
