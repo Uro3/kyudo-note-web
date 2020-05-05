@@ -1,0 +1,8 @@
+.og-form-field {
+  $width: 480px;
+  max-width: $width;
+  margin: 0 auto;
+  input {
+    max-width: $width;
+  }
+}

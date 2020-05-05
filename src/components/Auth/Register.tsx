@@ -15,7 +15,7 @@ const Register: React.FC<{}> = () => {
     setPassword(event.target.value);
   };
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const onSubmit = async (event: React.MouseEvent): Promise<void> => {
     event.preventDefault();
 
     try {
@@ -36,20 +36,26 @@ const Register: React.FC<{}> = () => {
   }, [history]);
 
   return (
-    <div>
-      <p>新規登録</p>
-      <form onSubmit={onSubmit}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={onEmailChanged} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={onPasswordChanged}/>
-        </label>
-        <input type="submit" value="登録"/>
-      </form>
-      <Link to='/login'>ログイン</Link>
+    <div className="container og-form-field">
+      <h1 className="title is-4">新規登録</h1>
+      <div className="field">
+        <label className="label">メールアドレス</label>
+        <div className="control">
+          <input className="input" type="email" value={email} onChange={onEmailChanged}/>
+        </div>
+      </div>
+      <div className="field">
+        <label className="label">パスワード</label>
+        <div className="control">
+          <input className="input" type="password" value={password} onChange={onPasswordChanged}/>
+        </div>
+      </div>
+      <div className="field">
+        <div className="control">
+          <button className="button is-primary" onClick={onSubmit}>登録</button>
+        </div>
+      </div>
+      アカウント登録済みの場合：<Link to='/login'>ログイン</Link>
     </div>
   );
 };

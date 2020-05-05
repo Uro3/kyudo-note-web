@@ -22,10 +22,10 @@ const ScoreGroup: React.FC<Props> = props => {
   }
 
   return (
-    <div>
+    <div className="container">
       {scoreUnits}
-      <button onClick={props.add}>追加</button>
-      <button onClick={onClickSave}>一時保存</button>
+      <button className="button is-small" onClick={props.add}>追加</button>
+      <button className="button is-small" onClick={onClickSave}>一時保存</button>
     </div>
   );
 };
