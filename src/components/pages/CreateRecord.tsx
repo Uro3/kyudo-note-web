@@ -1,38 +1,29 @@
 import * as React from 'react';
-import ScoreSet from '../parts/ScoreSet';
+import Record from '../containers/Record';
 import { ScoreSetState } from '../../type';
 import { STORAGE_NAME } from '../../constants';
 import firebase from '../../firebase';
 
-type Props = {
-  scoreSets: ScoreSetState[];
-  add: () => void;
-};
-
-const CreateRecord: React.FC<Props> = props => {
+const CreateRecord: React.FC = () => {
   const db = firebase.firestore();
   const user = firebase.auth().currentUser;
 
-  const scoreSets = props.scoreSets.map(scoreSet => 
-    <ScoreSet key={scoreSet.id} id={scoreSet.id} scores={scoreSet.scores} />
-  );
-
-  const getSavedScore = (): ScoreSetState[] => {
-    return props.scoreSets.filter(scoreSet =>
+  const getSavedScore = (scoreSets: ScoreSetState[]): ScoreSetState[] => {
+    return scoreSets.filter(scoreSet =>
       scoreSet.scores.some(score => score)
     );
   };
 
-  const onClickTemporarySave = (): void => {
-    const data = JSON.stringify(getSavedScore());
+  const saveTemporary = (scoreSets: ScoreSetState[]): void => {
+    const data = JSON.stringify(getSavedScore(scoreSets));
     localStorage.setItem(STORAGE_NAME, data);
   };
 
-  const onClickSave = (): void => {
+  const save = (scoreSets: ScoreSetState[]): void => {
     if (user) {
       db.collection('records').add({
         uid: user.uid,
-        scores: getSavedScore(),
+        scores: getSavedScore(scoreSets),
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
@@ -40,14 +31,7 @@ const CreateRecord: React.FC<Props> = props => {
 
   return (
     <div className="container">
-      {scoreSets}
-      <div className="og-vspace">
-        <button className="button is-small" onClick={props.add}>追加</button>
-        <button className="button is-small" onClick={onClickTemporarySave}>一時保存</button>
-      </div>
-      <div className="og-vspace">
-        <button className="button is-small" onClick={onClickSave}>保存</button>
-      </div>
+      <Record save={save} saveTemporary={saveTemporary} />
     </div>
   );
 };
