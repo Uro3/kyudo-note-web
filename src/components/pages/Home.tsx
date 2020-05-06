@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
 
-const Login: React.FC<{}> = () => {
+const Home: React.FC<{}> = () => {
   return (
     <div className="container">
       <ul>
@@ -13,4 +13,4 @@ const Login: React.FC<{}> = () => {
   );
 };
 
-export default Login;
+export default Home;
