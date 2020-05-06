@@ -21,7 +21,7 @@ type Props = {
 };
 
 const scoreValue: React.FC<Props> = props => {
-  const onClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
+  const onClick = (): void => {
     props.update(props.id);
   };
 
