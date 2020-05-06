@@ -4,10 +4,13 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import { Home } from './components/Home';
-import { Navbar } from './components/Navbar';
-import { ScoreGroupContainer } from './components/ScoreGroup';
-import { Auth, Register, Login, Logout } from './components/Auth';
+import Home from './components/pages/Home';
+import Navbar from './components/commons/Navbar';
+import ScoreGroupContainer from './components/pages/ScoreGroupContainer';
+import Auth from './components/commons/Auth';
+import Register from './components/pages/Register';
+import Login from './components/pages/Login';
+import Logout from './components/pages/Logout';
 
 const App: React.FC = () => {
   return (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Score from '../Score';
+import Score from '../parts/Score';
 import { ScoreState } from '../../types';
 import { STORAGE_NAME } from '../../constants';
 
