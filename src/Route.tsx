@@ -5,7 +5,7 @@ import Signup from './components/pages/Signup';
 import Signin from './components/pages/Signin';
 import Signout from './components/pages/Signout';
 import Home from './components/pages/Home';
-import ScoreGroupContainer from './components/containers/ScoreGroupContainer';
+import CreateRecord from './components/containers/CreateRecord';
 
 const AppRoute: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const AppRoute: React.FC = () => {
       <Auth>
         <Switch>
           <Route exact path='/' component={Home}></Route>
-          <Route path='/record' component={ScoreGroupContainer}></Route>
+          <Route path='/record' component={CreateRecord}></Route>
         </Switch>
       </Auth>
     </Switch>

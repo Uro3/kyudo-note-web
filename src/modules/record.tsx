@@ -1,9 +1,9 @@
 import { Action } from 'redux';
-import { ScoreGroupState, ScoreState } from '../type';
+import { RecordState, ScoreSetState } from '../type';
 import { STORAGE_NAME } from '../constants';
 
-const ADD = 'app/scoreGroup/ADD' as const;
-const UPDATE = 'app/scoreGroup/UPDATE' as const;
+const ADD = 'app/record/ADD' as const;
+const UPDATE = 'app/record/UPDATE' as const;
 
 interface AddAction extends Action {
   type: typeof ADD;
@@ -29,9 +29,9 @@ export const update = (id: number, index: number): UpdateAction => ({
   }
 });
 
-export type ScoreGroupActions = AddAction | UpdateAction;
+export type RecordActions = AddAction | UpdateAction;
 
-let localData: ScoreState[] = [];
+let localData: ScoreSetState[] = [];
 const localDataJson = localStorage.getItem(STORAGE_NAME);
 if (localDataJson) {
   try {
@@ -41,38 +41,38 @@ if (localDataJson) {
   }
 }
 
-const initialState: ScoreGroupState = {
-  scores: localData.length > 0 ? localData : [{
+const initialState: RecordState = {
+  scoreSets: localData.length > 0 ? localData : [{
     id: 0,
-    values: [0, 0, 0, 0],
+    scores: [0, 0, 0, 0],
   }]
 };
 
-export default function reducer(state: ScoreGroupState = initialState, action: ScoreGroupActions): ScoreGroupState {
+export default function reducer(state: RecordState = initialState, action: RecordActions): RecordState {
   switch (action.type) {
     case ADD: {
-      const lastId = Math.max(...state.scores.map(score => score.id));
+      const lastId = Math.max(...state.scoreSets.map(scoreSet => scoreSet.id));
       const newScore = {
         id: lastId + 1,
-        values: [0, 0, 0, 0]
+        scores: [0, 0, 0, 0]
       };
       return {
         ...state,
-        scores: [...state.scores, newScore],
+        scoreSets: [...state.scoreSets, newScore],
       };
     }
     case UPDATE: {
       const {id, index} = action.payload;
-      const newScores = state.scores.map(score => {
-        if (score.id === id) {
-          const value = score.values[index]
-          score.values[index] = (value + 1) % 4;
+      const newScores = state.scoreSets.map(scoreSet => {
+        if (scoreSet.id === id) {
+          const value = scoreSet.scores[index]
+          scoreSet.scores[index] = (value + 1) % 4;
         }
-        return score;
+        return scoreSet;
       });
       return {
         ...state,
-        scores: newScores,
+        scoreSets: newScores,
       };
     }
     default: {

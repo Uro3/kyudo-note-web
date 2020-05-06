@@ -1,13 +1,13 @@
 import { createStore, combineReducers } from 'redux';
-import ScoreGroup, { ScoreGroupActions } from './modules/scoreGroup';
+import Record, { RecordActions } from './modules/record';
 
 const reducers = combineReducers({
-  ScoreGroup
+  Record
 });
 
 const store = createStore(reducers);
 
 export default store;
 
-export type AppActions = ScoreGroupActions;
+export type AppActions = RecordActions;
 export type AppState = ReturnType<typeof store.getState>;
