@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { AppState, AppActions } from '../../store';
 import { add } from '../../modules/scoreGroup';
-import ScoreGroup from './ScoreGroup';
+import ScoreGroup from '../pages/ScoreGroup';
 
 const mapStateToProps = (state: AppState) => ({
   scores: state.ScoreGroup.scores

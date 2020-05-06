@@ -5,7 +5,7 @@ import Signup from './components/pages/Signup';
 import Signin from './components/pages/Signin';
 import Signout from './components/pages/Signout';
 import Home from './components/pages/Home';
-import ScoreGroupContainer from './components/pages/ScoreGroupContainer';
+import ScoreGroupContainer from './components/containers/ScoreGroupContainer';
 
 const AppRoute: React.FC = () => {
   return (

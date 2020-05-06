@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ScoreValueContainer from './ScoreValueContainer';
+import ScoreValueContainer from '../containers/ScoreValueContainer';
 import { ScoreState } from '../../type';
 
 const Score: React.FC<ScoreState> = props => {
