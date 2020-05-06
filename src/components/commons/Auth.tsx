@@ -26,7 +26,7 @@ const Auth: React.FC<Props> = props => {
     return <div>{props.children}</div>;
   }
   return (
-    <Redirect to='/login' />
+    <Redirect to='/signin' />
   );
 };
 

@@ -40,8 +40,8 @@ const Navbar: React.FC<{}> = () => {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="buttons">
-              <Link to="/login" className="button is-primary">Login</Link>
-              <Link to="/logout" className="button is-light">LOGOUT</Link>
+              <Link to="/signin" className="button is-primary">サインイン</Link>
+              <Link to="/signout" className="button is-light">サインアウト</Link>
             </div>
           </div>
         </div>

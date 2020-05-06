@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Auth from './components/commons/Auth';
-import Register from './components/pages/Register';
-import Login from './components/pages/Login';
-import Logout from './components/pages/Logout';
+import Signup from './components/pages/Signup';
+import Signin from './components/pages/Signin';
+import Signout from './components/pages/Signout';
 import Home from './components/pages/Home';
 import ScoreGroupContainer from './components/pages/ScoreGroupContainer';
 
 const AppRoute: React.FC = () => {
   return (
     <Switch>
-      <Route path='/register' component={Register}></Route>
-      <Route path='/login' component={Login}></Route>
-      <Route path='/logout' component={Logout}></Route>
+      <Route path='/signup' component={Signup}></Route>
+      <Route path='/signin' component={Signin}></Route>
+      <Route path='/signout' component={Signout}></Route>
       <Auth>
         <Switch>
           <Route exact path='/' component={Home}></Route>

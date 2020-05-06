@@ -2,21 +2,21 @@ import * as React from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import firebase from '../../firebase';
 
-const Logout: React.FC<{}> = () => {
+const Signout: React.FC<{}> = () => {
   const history = useHistory();
-  const [isLogoutFinished, setIsLogoutFinished] = React.useState(false);
+  const [isSignoutFinished, setIsSignoutFinished] = React.useState(false);
 
   React.useEffect(() => {
     firebase.auth().signOut().then(() => {
-      setIsLogoutFinished(true);
+      setIsSignoutFinished(true);
     }).catch(error => {
       console.log(error);
       history.goBack();
     });
   }, [history]);
 
-  const view = isLogoutFinished
-    ? <Redirect to='/login'/>
+  const view = isSignoutFinished
+    ? <Redirect to='/signin'/>
     : <p>Logging out...</p> 
 
   return (
@@ -26,4 +26,4 @@ const Logout: React.FC<{}> = () => {
   );
 };
 
-export default Logout;
+export default Signout;
