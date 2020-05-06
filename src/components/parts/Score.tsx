@@ -1,16 +1,38 @@
 import * as React from 'react';
-import ScoreValueContainer from '../containers/ScoreValueContainer';
-import { ScoreState } from '../../type';
 
-const Score: React.FC<ScoreState> = props => {
-  const ScoreValues = props.values.map((value, index) => 
-    <ScoreValueContainer key={index} id={index} value={value} scoreId={props.id}></ScoreValueContainer> 
-  );
+const enum Sign {
+  None = '-',
+  Hit = '○',
+  Miss = '×',
+  Unknown = '?',
+}
+
+const signMap = new Map<number, Sign>([
+  [0, Sign.None],
+  [1, Sign.Hit],
+  [2, Sign.Miss],
+  [3, Sign.Unknown],
+]);
+
+type Props = {
+  id: number;
+  value: number;
+  update: (id: number) => void;
+};
+
+const Score: React.FC<Props> = props => {
+  const onClick = (): void => {
+    props.update(props.id);
+  };
+
+  const sign = signMap.get(props.value) || Sign.None;
 
   return (
-    <div className="og-score-row">
-      {ScoreValues}
-    </div>
+    <button className="og-score" onClick={onClick}>
+      <span className={sign === Sign.None ? 'og-transparent' : ''}>
+        {sign}
+      </span>
+    </button>
   );
 };
 

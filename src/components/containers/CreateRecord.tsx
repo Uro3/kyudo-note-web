@@ -1,11 +1,11 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { AppState, AppActions } from '../../store';
-import { add } from '../../modules/scoreGroup';
-import ScoreGroup from '../pages/ScoreGroup';
+import { add } from '../../modules/record';
+import CreateRecord from '../pages/CreateRecord';
 
 const mapStateToProps = (state: AppState) => ({
-  scores: state.ScoreGroup.scores
+  scoreSets: state.Record.scoreSets
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ScoreGroup);
+)(CreateRecord);

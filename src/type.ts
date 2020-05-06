@@ -1,8 +1,8 @@
-export type ScoreState = {
+export type ScoreSetState = {
   id: number;
-  values: number[];
+  scores: number[];
 };
 
-export type ScoreGroupState = {
-  scores: ScoreState[];
+export type RecordState = {
+  scoreSets: ScoreSetState[];
 };
