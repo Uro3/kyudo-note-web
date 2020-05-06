@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ScoreValueContainer from './ScoreValueContainer';
-import { ScoreState } from '../../types';
+import { ScoreState } from '../../type';
 
 const Score: React.FC<ScoreState> = props => {
   const ScoreValues = props.values.map((value, index) => 

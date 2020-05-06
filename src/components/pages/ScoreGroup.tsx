@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Score from '../parts/Score';
-import { ScoreState } from '../../types';
+import { ScoreState } from '../../type';
 import { STORAGE_NAME } from '../../constants';
 
 type Props = {
