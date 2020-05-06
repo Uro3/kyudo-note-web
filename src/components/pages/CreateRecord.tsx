@@ -17,11 +17,14 @@ const CreateRecord: React.FC<Props> = props => {
     <ScoreSet key={scoreSet.id} id={scoreSet.id} scores={scoreSet.scores} />
   );
 
-  const onClickTemporarySave = (): void => {
-    const savedScores = props.scoreSets.filter(scoreSet =>
+  const getSavedScore = (): ScoreSetState[] => {
+    return props.scoreSets.filter(scoreSet =>
       scoreSet.scores.some(score => score)
     );
-    const data = JSON.stringify(savedScores);
+  };
+
+  const onClickTemporarySave = (): void => {
+    const data = JSON.stringify(getSavedScore());
     localStorage.setItem(STORAGE_NAME, data);
   };
 
@@ -29,7 +32,8 @@ const CreateRecord: React.FC<Props> = props => {
     if (user) {
       db.collection('records').add({
         uid: user.uid,
-        score: props.scoreSets,
+        scores: getSavedScore(),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
   };
