@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { AppActions } from '../../store';
 import { update } from '../../modules/scoreGroup';
-import ScoreValue from './ScoreValue'
+import ScoreValue from '../parts/ScoreValue';
 
 type Props = {
   scoreId: number;

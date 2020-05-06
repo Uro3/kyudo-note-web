@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { ScoreGroupState, ScoreState } from '../types';
+import { ScoreGroupState, ScoreState } from '../type';
 import { STORAGE_NAME } from '../constants';
 
 const ADD = 'app/scoreGroup/ADD' as const;

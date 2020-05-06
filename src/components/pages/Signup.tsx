@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Link, useHistory  } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import firebase from '../../firebase';
 
-const Login: React.FC<{}> = () => {
+const Signup: React.FC<{}> = () => {
   const history = useHistory();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -19,7 +19,7 @@ const Login: React.FC<{}> = () => {
     event.preventDefault();
 
     try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
       history.push('/');
     } catch (error) {
       console.log(error);
@@ -37,7 +37,7 @@ const Login: React.FC<{}> = () => {
 
   return (
     <div className="container og-form-field">
-      <h1 className="title is-4">ログイン</h1>
+      <h1 className="title is-4">新規登録</h1>
       <div className="field">
         <label className="label">メールアドレス</label>
         <div className="control">
@@ -52,12 +52,12 @@ const Login: React.FC<{}> = () => {
       </div>
       <div className="field">
         <div className="control">
-          <button className="button is-primary" onClick={onSubmit}>ログイン</button>
+          <button className="button is-primary" onClick={onSubmit}>登録</button>
         </div>
       </div>
-      アカウントがない場合：<Link to='/register'>新規登録</Link>
+      アカウント登録済みの場合：<Link to='/signin'>サインイン</Link>
     </div>
   );
 };
 
-export default Login;
+export default Signup;
