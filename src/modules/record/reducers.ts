@@ -1,35 +1,6 @@
-import { Action } from 'redux';
-import { RecordState, ScoreSetState } from '../type';
-import { STORAGE_NAME } from '../constants';
-
-const ADD = 'app/record/ADD' as const;
-const UPDATE = 'app/record/UPDATE' as const;
-
-interface AddAction extends Action {
-  type: typeof ADD;
-}
-
-export const add = (): AddAction => ({
-  type: ADD
-});
-
-interface UpdateAction extends Action {
-  type: typeof UPDATE;
-  payload: {
-    id: number;
-    index: number;
-  };
-}
-
-export const update = (id: number, index: number): UpdateAction => ({
-  type: UPDATE,
-  payload: {
-    id: id,
-    index: index
-  }
-});
-
-export type RecordActions = AddAction | UpdateAction;
+import types, { RecordActions } from './types';
+import { RecordState, ScoreSetState } from  '../../types/record' 
+import { STORAGE_NAME } from '../../constants';
 
 let localData: ScoreSetState[] = [];
 const localDataJson = localStorage.getItem(STORAGE_NAME);
@@ -48,9 +19,9 @@ const initialState: RecordState = {
   }]
 };
 
-export default function reducer(state: RecordState = initialState, action: RecordActions): RecordState {
+const recordReducer = (state: RecordState = initialState, action: RecordActions): RecordState => {
   switch (action.type) {
-    case ADD: {
+    case types.ADD: {
       const lastId = Math.max(...state.scoreSets.map(scoreSet => scoreSet.id));
       const newScore = {
         id: lastId + 1,
@@ -61,7 +32,7 @@ export default function reducer(state: RecordState = initialState, action: Recor
         scoreSets: [...state.scoreSets, newScore],
       };
     }
-    case UPDATE: {
+    case types.UPDATE: {
       const {id, index} = action.payload;
       const newScores = state.scoreSets.map(scoreSet => {
         if (scoreSet.id === id) {
@@ -79,4 +50,6 @@ export default function reducer(state: RecordState = initialState, action: Recor
       return state;
     }
   }
-}
+};
+
+export default recordReducer;

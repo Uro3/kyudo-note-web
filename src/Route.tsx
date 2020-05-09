@@ -5,7 +5,7 @@ import Signup from './components/pages/Signup';
 import Signin from './components/pages/Signin';
 import Signout from './components/pages/Signout';
 import Home from './components/pages/Home';
-import CreateRecord from './components/containers/CreateRecord';
+import CreateRecord from './components/pages/CreateRecord';
 
 const AppRoute: React.FC = () => {
   return (

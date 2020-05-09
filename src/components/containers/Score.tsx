@@ -1,17 +1,21 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { AppActions } from '../../store';
-import { update } from '../../modules/record';
+import { recordAction } from '../../modules/record';
 import Score from '../parts/Score';
 
 type Props = {
   scoreSetId: number;
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<AppActions>, ownProps: Props) => {
+type DispatchProps  = {
+  update: (id: number) => void;
+}
+
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>, ownProps: Props): DispatchProps => {
   const {scoreSetId} = ownProps;
   return {
-    update: (id: number) => dispatch(update(scoreSetId, id))
+    update: (id: number): AppActions => dispatch(recordAction.update(scoreSetId, id))
   };
 };
 
