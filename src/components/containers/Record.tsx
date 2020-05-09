@@ -1,15 +1,24 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { AppState, AppActions } from '../../store';
-import { add } from '../../modules/record';
+import { recordAction } from '../../modules/record';
+import { ScoreSetState } from '../../types/record';
 import Record from '../parts/Record';
 
-const mapStateToProps = (state: AppState) => ({
+type StateProps = {
+  scoreSets: ScoreSetState[];
+};
+
+type DispatchProps  = {
+  add: () => void;
+}
+
+const mapStateToProps = (state: AppState): StateProps => ({
   scoreSets: state.Record.scoreSets
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<AppActions>) => ({
-  add: () => dispatch(add())
+const mapDispatchToProps = (dispatch: Dispatch<AppActions>): DispatchProps => ({
+  add: (): AppActions => dispatch(recordAction.add())
 });
 
 export default connect(

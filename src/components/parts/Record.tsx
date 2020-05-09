@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ScoreSet from './ScoreSet';
-import { ScoreSetState } from '../../type';
+import { ScoreSetState } from '../../types/record';
 
 type Props = {
   scoreSets: ScoreSetState[];

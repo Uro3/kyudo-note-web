@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import Record, { RecordActions } from './modules/record';
+import { recordReducer, RecordActions } from './modules/record';
 
 const reducers = combineReducers({
-  Record
+  Record: recordReducer
 });
 
 const store = createStore(reducers);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Record from '../containers/Record';
-import { ScoreSetState } from '../../type';
+import { ScoreSetState } from '../../types/record';
 import { STORAGE_NAME } from '../../constants';
 import firebase from '../../firebase';
 
