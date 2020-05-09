@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import Auth from './components/containers/Auth';
 import Navbar from './components/commons/Navbar';
 import Route from './Route';
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <section className="section">
-        <Route />
-      </section>
-    </BrowserRouter>
+    <Auth>
+      <BrowserRouter>
+        <Navbar />
+        <section className="section">
+          <Route />
+        </section>
+      </BrowserRouter>
+    </Auth>
   );
 };
 

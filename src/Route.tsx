@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Auth from './components/commons/Auth';
+import Cirtified from './components/commons/Cirtified';
 import Signup from './components/pages/Signup';
 import Signin from './components/pages/Signin';
 import Signout from './components/pages/Signout';
@@ -13,12 +13,12 @@ const AppRoute: React.FC = () => {
       <Route path='/signup' component={Signup}></Route>
       <Route path='/signin' component={Signin}></Route>
       <Route path='/signout' component={Signout}></Route>
-      <Auth>
+      <Cirtified>
         <Switch>
           <Route exact path='/' component={Home}></Route>
           <Route path='/record' component={CreateRecord}></Route>
         </Switch>
-      </Auth>
+      </Cirtified>
     </Switch>
   );
 };
