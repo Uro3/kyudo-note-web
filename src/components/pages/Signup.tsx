@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import firebase from '../../firebase';
+import AuthCheck from '../containers/AuthCheck';
 
 const Signup: React.FC<{}> = () => {
   const history = useHistory();
@@ -36,27 +37,29 @@ const Signup: React.FC<{}> = () => {
   }, [history]);
 
   return (
-    <div className="container og-form-field">
-      <h1 className="title is-4">新規登録</h1>
-      <div className="field">
-        <label className="label">メールアドレス</label>
-        <div className="control">
-          <input className="input" type="email" value={email} onChange={onEmailChanged}/>
+    <AuthCheck requireAuth={false} redirectPath='/record'>
+      <div className="container og-form-field">
+        <h1 className="title is-4">新規登録</h1>
+        <div className="field">
+          <label className="label">メールアドレス</label>
+          <div className="control">
+            <input className="input" type="email" value={email} onChange={onEmailChanged}/>
+          </div>
         </div>
-      </div>
-      <div className="field">
-        <label className="label">パスワード</label>
-        <div className="control">
-          <input className="input" type="password" value={password} onChange={onPasswordChanged}/>
+        <div className="field">
+          <label className="label">パスワード</label>
+          <div className="control">
+            <input className="input" type="password" value={password} onChange={onPasswordChanged}/>
+          </div>
         </div>
-      </div>
-      <div className="field">
-        <div className="control">
-          <button className="button is-primary" onClick={onSubmit}>登録</button>
+        <div className="field">
+          <div className="control">
+            <button className="button is-primary" onClick={onSubmit}>登録</button>
+          </div>
         </div>
+        アカウント登録済みの場合：<Link to='/signin'>サインイン</Link>
       </div>
-      アカウント登録済みの場合：<Link to='/signin'>サインイン</Link>
-    </div>
+    </AuthCheck>
   );
 };
 

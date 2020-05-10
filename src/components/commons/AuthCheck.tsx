@@ -3,16 +3,18 @@ import { Redirect } from 'react-router-dom';
 
 type Props = {
   isLoggedIn: boolean;
+  requireAuth: boolean;
+  redirectPath: string;
   children: React.ReactNode;
 };
 
-const Cirtified: React.FC<Props> = props => {
-  if (props.isLoggedIn) {
+const AuthCheck: React.FC<Props> = props => {  
+  if (props.isLoggedIn === props.requireAuth) {
     return <div>{props.children}</div>;
   }
   return (
-    <Redirect to='/signin' />
+    <Redirect to={props.redirectPath} />
   );
 };
 
-export default Cirtified;
+export default AuthCheck;

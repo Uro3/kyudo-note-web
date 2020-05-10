@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { AppState } from '../../store';
-import Cirtified from '../commons/Cirtified';
+import AuthCheck from '../commons/AuthCheck';
 
 type StateProps = {
   isLoggedIn: boolean;
@@ -12,4 +12,4 @@ const mapStateToProps = (state: AppState): StateProps => ({
 
 export default connect(
   mapStateToProps
-)(Cirtified);
+)(AuthCheck);
