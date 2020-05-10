@@ -2,6 +2,7 @@ import * as React from 'react';
 import firebase from '../../firebase';
 
 type Props = {
+  isLoaded: boolean;
   updateIsLoggedIn: (isLoggedIn: boolean) => void;
   updateIsLoaded: (isLoaded: boolean) => void;
   children: React.ReactNode;
@@ -10,8 +11,6 @@ type Props = {
 const Auth: React.FC<Props> = props => {
   React.useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
-
       if (user) {
         props.updateIsLoggedIn(true);
       }
@@ -19,6 +18,9 @@ const Auth: React.FC<Props> = props => {
     });
   }, []);
 
+  if (!props.isLoaded) {
+    return <p>Checking...</p>;
+  }
   return <div>{props.children}</div>;
 };
 

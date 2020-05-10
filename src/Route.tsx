@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Cirtified from './components/commons/Cirtified';
+import Cirtified from './components/containers/Cirtified';
 import Signup from './components/pages/Signup';
 import Signin from './components/pages/Signin';
 import Signout from './components/pages/Signout';

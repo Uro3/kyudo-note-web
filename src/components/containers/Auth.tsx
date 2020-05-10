@@ -1,13 +1,21 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { AppActions } from '../../store';
+import { AppState, AppActions } from '../../store';
 import { authAction } from '../../modules/auth';
 import Auth from '../commons/Auth';
+
+type StateProps = {
+  isLoaded: boolean;
+};
 
 type DispatchProps  = {
   updateIsLoggedIn: (isLoggedIn: boolean) => void;
   updateIsLoaded: (isLoaded: boolean) => void;
 }
+
+const mapStateToProps = (state: AppState): StateProps => ({
+  isLoaded: state.Auth.isLoaded,
+});
 
 const mapDispatchToProps = (dispatch: Dispatch<AppActions>): DispatchProps => {
   return {
@@ -17,6 +25,6 @@ const mapDispatchToProps = (dispatch: Dispatch<AppActions>): DispatchProps => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Auth);

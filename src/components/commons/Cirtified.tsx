@@ -1,28 +1,13 @@
 import * as React from 'react';
 import { Redirect } from 'react-router-dom';
-import firebase from '../../firebase';
 
 type Props = {
+  isLoggedIn: boolean;
   children: React.ReactNode;
 };
 
-const Auth: React.FC<Props> = props => {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  const [isCheckFinished, setIsCheckFinished] = React.useState(false);
-
-  React.useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        setIsLoggedIn(true);
-      }
-      setIsCheckFinished(true);
-    });
-  }, []);
-
-  if (!isCheckFinished) {
-    return <p>Checking...</p>;
-  }
-  if (isLoggedIn) {
+const Cirtified: React.FC<Props> = props => {
+  if (props.isLoggedIn) {
     return <div>{props.children}</div>;
   }
   return (
@@ -30,4 +15,4 @@ const Auth: React.FC<Props> = props => {
   );
 };
 
-export default Auth;
+export default Cirtified;
