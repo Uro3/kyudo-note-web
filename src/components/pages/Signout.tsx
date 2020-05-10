@@ -20,15 +20,10 @@ const Signout: React.FC<Props> = props => {
     });
   }, [history]);
 
-  const view = isSignoutFinished
-    ? <Redirect to='/signin'/>
-    : <p>Logging out...</p> 
-
-  return (
-    <div>
-      { view }
-    </div>
-  );
+  if (isSignoutFinished) {
+    return <Redirect to='/signin'/>;
+  }
+  return <p>Logging out...</p>;
 };
 
 export default Signout;
