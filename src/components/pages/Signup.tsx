@@ -27,15 +27,6 @@ const Signup: React.FC<{}> = () => {
     }
   };
 
-  React.useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        // @TODO Fix
-        history.push('/');
-      }
-    });
-  }, [history]);
-
   return (
     <AuthCheck requireAuth={false} redirectPath='/record'>
       <div className="container og-form-field">
