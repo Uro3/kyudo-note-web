@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Link, useHistory  } from 'react-router-dom';
 import firebase from '../../firebase';
 import AuthCheck from '../containers/AuthCheck';
+import ErrorMessage from '../parts/ErrorMessage';
+import validation from '../../lib/validation';
 
 const Signin: React.FC<{}> = () => {
   const history = useHistory();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState('');
 
   const onEmailChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setEmail(event.target.value);
@@ -16,14 +19,40 @@ const Signin: React.FC<{}> = () => {
     setPassword(event.target.value);
   };
 
+  const deleteErrorMessage = (): void => {
+    setError('');
+  };
+
+  const validate = (): boolean => {
+    if (!email) {
+      setError('メールアドレスを入力してください');
+      return false;
+    }
+    if (!validation.isEmail(email)) {
+      setError('メールアドレスの形式が不正です');
+      return false;
+    }
+    if (!password) {
+      setError('パスワードを入力してください');
+      return false;
+    }
+    if (password.length < 8) {
+      setError('メールアドレスは8文字以上で入力してください');
+      return false;
+    }
+    return true;
+  };
+
   const onSubmit = async (event: React.MouseEvent): Promise<void> => {
     event.preventDefault();
 
-    try {
-      await firebase.auth().signInWithEmailAndPassword(email, password);
-      history.push('/');
-    } catch (error) {
-      console.log(error);
+    if (validate()) {
+      try {
+        await firebase.auth().signInWithEmailAndPassword(email, password);
+        history.push('/');
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -31,6 +60,7 @@ const Signin: React.FC<{}> = () => {
     <AuthCheck requireAuth={false} redirectPath='/record'>
       <div className="container og-form-field">
         <h1 className="title is-4">サインイン</h1>
+        <ErrorMessage message={error} deleteMessage={deleteErrorMessage} />
         <div className="field">
           <label className="label">メールアドレス</label>
           <div className="control">
