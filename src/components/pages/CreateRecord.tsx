@@ -3,10 +3,14 @@ import Record from '../containers/Record';
 import { ScoreSetState } from '../../types/record';
 import { STORAGE_NAME } from '../../constants';
 import firebase from '../../firebase';
+import dateUtil from '../../lib/dateUtil';
 
 const CreateRecord: React.FC = () => {
-  const db = firebase.firestore();
-  const user = firebase.auth().currentUser;
+  const [date, setDate] = React.useState(dateUtil.today);
+
+  const onDateChanged = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setDate(event.target.value);
+  };
 
   const getSavedScore = (scoreSets: ScoreSetState[]): ScoreSetState[] => {
     return scoreSets.filter(scoreSet =>
@@ -20,10 +24,13 @@ const CreateRecord: React.FC = () => {
   };
 
   const save = (scoreSets: ScoreSetState[]): void => {
+    const db = firebase.firestore();
+    const user = firebase.auth().currentUser;
     if (user) {
       db.collection('records').add({
         uid: user.uid,
         scores: getSavedScore(scoreSets),
+        date: date,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
@@ -31,6 +38,7 @@ const CreateRecord: React.FC = () => {
 
   return (
     <div className="container">
+      <input className="input is-small og-input-date" type="date" value={date} onChange={onDateChanged} />
       <Record save={save} saveTemporary={saveTemporary} />
     </div>
   );
