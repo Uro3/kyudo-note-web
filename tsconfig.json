@@ -6,8 +6,11 @@
     "jsx": "react",
     "sourceMap": true,
     "strict": true,
-    "baseUrl": "./src",
-    "paths": {"png": ["@types/png"]},
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "png": ["src/@types/png"],
+    },
     "typeRoots": ["@types", "node_modules/@types"],
   },
   "include": [
