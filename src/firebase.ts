@@ -22,4 +22,7 @@ if (firebase.apps.length === 0) {
   });
 }
 
+export const auth = firebase.auth();
+export const functions = firebase.app().functions('asia-northeast1');
+
 export default firebase;

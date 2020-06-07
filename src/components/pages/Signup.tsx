@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import firebase from '~/firebase';
+import { auth } from '~/firebase';
 import AuthCheck from '~/components/containers/AuthCheck';
 import ErrorMessage from '~/components/parts/ErrorMessage';
 import validation from '~/lib/validation';
@@ -48,7 +48,7 @@ const Signup: React.FC<{}> = () => {
 
     if (validate()) {
       try {
-        await firebase.auth().createUserWithEmailAndPassword(email, password);
+        await auth.createUserWithEmailAndPassword(email, password);
         history.push('/');
       } catch (error) {
         console.log(error);
