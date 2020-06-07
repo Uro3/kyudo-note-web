@@ -3,21 +3,14 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/functions';
 
-type ConfigParameters = {
-  apiKey: string;
-  projectId: string;
-  senderId: string;
-  appId: string;
-  measurementId: string;
-};
+const apiKey = process.env.FIREBASE_API_KEY || '';
+const projectId = process.env.FIREBASE_PROJECT_ID || '';
+const senderId = process.env.FIREBASE_SENDER_ID || '';
+const appId = process.env.FIREBASE_APP_ID || '';
+const measurementId = process.env.FIREBASE_MEASUREMENT_ID || '';
 
-export const initFirebase = (configParameters: ConfigParameters): void => {
-  if (firebase.apps.length) {
-    return;
-  }
-
-  const {apiKey, projectId, senderId, appId, measurementId} = configParameters;
-  const firebaseConfig = {
+if (firebase.apps.length === 0) {  
+  firebase.initializeApp({
     apiKey: apiKey,
     authDomain: `${projectId}.firebaseapp.com`,
     databaseURL: `https://${projectId}.firebaseio.com`,
@@ -26,8 +19,7 @@ export const initFirebase = (configParameters: ConfigParameters): void => {
     messagingSenderId: senderId,
     appId: appId,
     measurementId: measurementId,
-  };
-  firebase.initializeApp(firebaseConfig);
-};
+  });
+}
 
 export default firebase;
