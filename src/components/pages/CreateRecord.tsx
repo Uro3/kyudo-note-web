@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Record from '../containers/Record';
-import { ScoreSetState } from '../../types/record';
-import { STORAGE_NAME } from '../../constants';
-import { saveRecord } from '../../service/record';
-import dateUtil from '../../lib/dateUtil';
+import Record from '~/components/containers/Record';
+import { ScoreSetState } from '~/types/record';
+import { STORAGE_NAME } from '~/constants';
+import { saveRecord } from '~/service/record';
+import dateUtil from '~/lib/dateUtil';
 
 const CreateRecord: React.FC = () => {
   const [date, setDate] = React.useState(dateUtil.today);

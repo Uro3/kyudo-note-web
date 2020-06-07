@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './store';
-import App from './App';
-import { initFirebase } from './firebase';
-import './assets/style/bulma.scss';
-import './assets/style/global.scss';
+import store from '~/store';
+import App from '~/App';
+import { initFirebase } from '~/firebase';
+import '~/assets/style/bulma.scss';
+import '~/assets/style/global.scss';
 
 const firebaseParameters = {
   apiKey: process.env.FIREBASE_API_KEY || '',

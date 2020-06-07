@@ -1,5 +1,5 @@
-import firebase from '../firebase';
-import { ScoreSetState } from '../types/record';
+import firebase from '~/firebase.ts';
+import { ScoreSetState } from '~/types/record';
 
 const saveRecord = async (scores: ScoreSetState[], date: string): Promise<void> => {
   const functions = firebase.app().functions('asia-northeast1');

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import firebase from '../../firebase';
-import AuthCheck from '../containers/AuthCheck';
-import ErrorMessage from '../parts/ErrorMessage';
-import validation from '../../lib/validation';
+import firebase from '~/firebase';
+import AuthCheck from '~/components/containers/AuthCheck';
+import ErrorMessage from '~/components/parts/ErrorMessage';
+import validation from '~/lib/validation';
 
 const Signup: React.FC<{}> = () => {
   const history = useHistory();

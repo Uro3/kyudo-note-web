@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { AppState } from '../../store';
-import Navbar from '../commons/Navbar';
+import { AppState } from '~/store';
+import Navbar from '~/components/commons/Navbar';
 
 type StateProps = {
   isLoggedIn: boolean;

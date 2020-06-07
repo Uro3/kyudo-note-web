@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { AppActions } from '../../store';
-import { authAction } from '../../modules/auth';
-import Signout from '../pages/Signout';
+import { AppActions } from '~/store';
+import { authAction } from '~/modules/auth';
+import Signout from '~/components/pages/Signout';
 
 type DispatchProps  = {
   updateIsLoggedIn: (isLoggedIn: boolean) => void;

@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { AppActions } from '../../store';
-import { recordAction } from '../../modules/record';
-import Score from '../parts/Score';
+import { AppActions } from '~/store';
+import { recordAction } from '~/modules/record';
+import Score from '~/components/parts/Score';
 
 type Props = {
   scoreSetId: number;

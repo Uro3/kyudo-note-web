@@ -1,5 +1,5 @@
 import * as React from 'react';
-import firebase from '../../firebase';
+import firebase from '~/firebase';
 
 type Props = {
   isLoaded: boolean;

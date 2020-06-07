@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
-import { recordReducer, RecordActions } from './modules/record';
-import { authReducer, AuthActions } from './modules/auth';
+import { recordReducer, RecordActions } from '~/modules/record';
+import { authReducer, AuthActions } from '~/modules/auth';
 
 const reducers = combineReducers({
   Record: recordReducer,

@@ -1,9 +1,9 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { AppState, AppActions } from '../../store';
-import { recordAction } from '../../modules/record';
-import { ScoreSetState } from '../../types/record';
-import Record from '../parts/Record';
+import { AppState, AppActions } from '~/store';
+import { recordAction } from '~/modules/record';
+import { ScoreSetState } from '~/types/record';
+import Record from '~/components/parts/Record';
 
 type StateProps = {
   scoreSets: ScoreSetState[];

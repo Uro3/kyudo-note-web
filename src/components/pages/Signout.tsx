@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
-import firebase from '../../firebase';
+import firebase from '~/firebase';
 
 type Props = {
   updateIsLoggedIn: (isLoggedIn: boolean) => void;
