@@ -2,7 +2,7 @@ import * as React from 'react';
 import Record from '../containers/Record';
 import { ScoreSetState } from '../../types/record';
 import { STORAGE_NAME } from '../../constants';
-import firebase from '../../firebase';
+import { saveRecord } from '../../service/record';
 import dateUtil from '../../lib/dateUtil';
 
 const CreateRecord: React.FC = () => {
@@ -23,16 +23,11 @@ const CreateRecord: React.FC = () => {
     localStorage.setItem(STORAGE_NAME, data);
   };
 
-  const save = (scoreSets: ScoreSetState[]): void => {
-    const db = firebase.firestore();
-    const user = firebase.auth().currentUser;
-    if (user) {
-      db.collection('records').add({
-        uid: user.uid,
-        scores: getSavedScore(scoreSets),
-        date: date,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      });
+  const save = async (scoreSets: ScoreSetState[]): Promise<void> => {
+    try {
+      await saveRecord(getSavedScore(scoreSets), date);
+    } catch (error) {
+      console.log(error);
     }
   };
 
