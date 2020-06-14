@@ -1,6 +1,6 @@
 import types, { RecordActions } from './types';
-import { RecordState, ScoreSetState } from  '../../types/record' 
-import { STORAGE_NAME } from '../../constants';
+import { RecordState, ScoreSetState } from  '~/types/record' 
+import { STORAGE_NAME } from '~/constants';
 
 let localData: ScoreSetState[] = [];
 const localDataJson = localStorage.getItem(STORAGE_NAME);

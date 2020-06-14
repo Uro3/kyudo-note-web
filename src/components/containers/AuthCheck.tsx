@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { AppState } from '../../store';
-import AuthCheck from '../commons/AuthCheck';
+import { AppState } from '~/store';
+import AuthCheck from '~/components/commons/AuthCheck';
 
 type StateProps = {
   isLoggedIn: boolean;

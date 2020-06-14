@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { AppState, AppActions } from '../../store';
-import { authAction } from '../../modules/auth';
-import Auth from '../commons/Auth';
+import { AppState, AppActions } from '~/store';
+import { authAction } from '~/modules/auth';
+import Auth from '~/components/commons/Auth';
 
 type StateProps = {
   isLoaded: boolean;

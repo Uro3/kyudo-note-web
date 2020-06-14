@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/image/logo.png';
+import logo from '~/assets/image/logo.png';
 
 type Props = {
   isLoggedIn: boolean;

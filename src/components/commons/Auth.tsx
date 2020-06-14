@@ -1,5 +1,5 @@
 import * as React from 'react';
-import firebase from '../../firebase';
+import { auth } from '~/firebase';
 
 type Props = {
   isLoaded: boolean;
@@ -10,7 +10,7 @@ type Props = {
 
 const Auth: React.FC<Props> = props => {
   React.useEffect(() => {
-    firebase.auth().onAuthStateChanged(user => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         props.updateIsLoggedIn(true);
       }

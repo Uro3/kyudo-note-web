@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Auth from './components/containers/Auth';
-import Navbar from './components/containers/Navbar';
-import Route from './Route';
+import Auth from '~/components/containers/Auth';
+import Navbar from '~/components/containers/Navbar';
+import Route from '~/Route';
 
 const App: React.FC = () => {
   return (
