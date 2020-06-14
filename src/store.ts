@@ -9,7 +9,7 @@ const reducers = combineReducers({
 
 const store = createStore(reducers);
 
-export default store;
-
-export type AppActions = RecordActions |  AuthActions;
+export type AppActions = RecordActions | AuthActions;
 export type AppState = ReturnType<typeof store.getState>;
+
+export default store;
