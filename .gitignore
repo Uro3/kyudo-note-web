@@ -1,6 +1,5 @@
 /node_modules
 /.firebase
-/public
 .env
 
 .DS_STORE
